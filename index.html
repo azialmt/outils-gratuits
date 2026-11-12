@@ -69,7 +69,18 @@
     <p>Des calculateurs gratuits pour faciliter votre quotidien.</p>
   </header>
 
-  <main>
+  
+    <section class="outil">
+      <h2>Calculer un prix après réduction</h2>
+      <label for="prix">Prix initial (€)</label>
+      <input id="prix" type="number" placeholder="Ex : 80">
+      <label for="reduction">Réduction (%)</label>
+      <input id="reduction" type="number" placeholder="Ex : 25">
+      <button onclick="calculerReduction()">Calculer</button>
+      <div class="resultat" id="resultatReduction"></div>
+    </section>
+
+<main>
     <section class="outil">
       <h2>Calculer un pourcentage</h2>
       <label for="nombre">Nombre de départ</label>
@@ -128,6 +139,13 @@
       document.getElementById("resultatEpargne").textContent =
         "Épargne totale : " + afficherEuros(e * d);
     }
-  </script>
+      function calculerReduction() {
+      const prix = Number(document.getElementById("prix").value);
+      const reduction = Number(document.getElementById("reduction").value);
+      const resultat = prix * (1 - reduction / 100);
+
+      document.getElementById("resultatReduction").textContent =
+        "Prix après réduction : " + afficherEuros(resultat);
+    }</script>
 </body>
 </html>
