@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outils Malins - Calculateurs gratuits</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      color: #202638;
+    }
+    header {
+      background: #243b68;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+    header h1 { margin: 0 0 10px; }
+    header p { margin: 0; }
+    main {
+      max-width: 750px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+    .outil {
+      background: white;
+      padding: 22px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px #0000000d;
+    }
+    h2 { margin-top: 0; color: #243b68; }
+    label { display: block; margin: 12px 0 6px; }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd2df;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 14px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 7px;
+      background: #315da8;
+      color: white;
+      font-size: 16px;
+    }
+    .resultat {
+      margin-top: 14px;
+      font-weight: bold;
+      color: #176b45;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #687080;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Outils Malins</h1>
+    <p>Des calculateurs gratuits pour faciliter votre quotidien.</p>
+  </header>
+
+  <main>
+    <section class="outil">
+      <h2>Calculer un pourcentage</h2>
+      <label for="nombre">Nombre de départ</label>
+      <input id="nombre" type="number" placeholder="Ex : 200">
+      <label for="pourcentage">Pourcentage</label>
+      <input id="pourcentage" type="number" placeholder="Ex : 15">
+      <button onclick="calculerPourcentage()">Calculer</button>
+      <div class="resultat" id="resultatPourcentage"></div>
+    </section>
+
+    <section class="outil">
+      <h2>Calculer son salaire annuel</h2>
+      <label for="salaire">Salaire mensuel brut (€)</label>
+      <input id="salaire" type="number" placeholder="Ex : 2000">
+      <button onclick="calculerSalaire()">Calculer</button>
+      <div class="resultat" id="resultatSalaire"></div>
+    </section>
+
+    <section class="outil">
+      <h2>Calculer ses économies</h2>
+      <label for="epargne">Somme mise de côté chaque mois (€)</label>
+      <input id="epargne" type="number" placeholder="Ex : 150">
+      <label for="duree">Nombre de mois</label>
+      <input id="duree" type="number" placeholder="Ex : 12">
+      <button onclick="calculerEpargne()">Calculer</button>
+      <div class="resultat" id="resultatEpargne"></div>
+    </section>
+  </main>
+
+  <footer>Outils Malins — Gratuit et accessible à tous.</footer>
+
+  <script>
+    function afficherEuros(nombre) {
+      return nombre.toLocaleString("fr-FR", {
+        style: "currency",
+        currency: "EUR"
+      });
+    }
+
+    function calculerPourcentage() {
+      const n = Number(document.getElementById("nombre").value);
+      const p = Number(document.getElementById("pourcentage").value);
+      document.getElementById("resultatPourcentage").textContent =
+        "Résultat : " + afficherEuros(n * p / 100);
+    }
+
+    function calculerSalaire() {
+      const s = Number(document.getElementById("salaire").value);
+      document.getElementById("resultatSalaire").textContent =
+        "Salaire annuel brut : " + afficherEuros(s * 12);
+    }
+
+    function calculerEpargne() {
+      const e = Number(document.getElementById("epargne").value);
+      const d = Number(document.getElementById("duree").value);
+      document.getElementById("resultatEpargne").textContent =
+        "Épargne totale : " + afficherEuros(e * d);
+    }
+  </script>
+</body>
+</html>
